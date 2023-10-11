@@ -7,6 +7,11 @@ pipeline {
       }
     }
 
+    stage('list dir') {
+      steps {
+        bat 'dir'
+      }
+    }
 
   }
 }
