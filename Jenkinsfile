@@ -15,7 +15,7 @@ pipeline {
 
     stage('Unit tests') {
       steps {
-        bat 'cd app.js & npm i & npm run test:unit'
+        bat 'cd exp-project & npm install & npm run test:unit'
       }
     }
 
