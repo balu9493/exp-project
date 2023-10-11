@@ -13,5 +13,11 @@ pipeline {
       }
     }
 
+    stage('Unit tests') {
+      steps {
+        bat 'cd  app.js & npm install & npm test'
+      }
+    }
+
   }
 }
