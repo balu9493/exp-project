@@ -15,13 +15,18 @@ pipeline {
           }
         }
 
-         stage('Unit tests') {
+      stage('Unit Tests') {
             steps {
                 // Execute Batch script commands
                 script {
-                    bat 'nuget restore exp-project.sln'
-                    bat 'msbuild exp-project.sln'
-                    bat 'nunit-console exp-project.Tests.dll'
+                    bat '''
+                        @echo off
+                        echo Installing Node.js dependencies
+                        npm install
+
+                        echo Running unit tests
+                        npm test
+                    '''
                 }
             }
         }
