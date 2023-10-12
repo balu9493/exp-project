@@ -17,7 +17,7 @@ pipeline {
 
         stage('Unit tests') {
           steps {
-            powershell 'nuget restore exp-project && msbuild exp-project.sln &&  Invoke-NUnit exp-project.Tests.dll'
+            powershell 'nuget restore exp-project; msbuild exp-project.sln;  Invoke-NUnit exp-project.Tests.dll'
           }
         }
 
