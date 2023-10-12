@@ -15,11 +15,17 @@ pipeline {
           }
         }
 
-        stage('Unit tests') {
-          steps {
-            powershell 'nuget restore exp-project; msbuild exp-project.sln;  Invoke-NUnit exp-project.Tests.dll'
-          }
+         stage('Unit tests') {
+            steps {
+                // Execute Batch script commands
+                script {
+                    bat 'nuget restore exp-project.sln'
+                    bat 'msbuild exp-project.sln'
+                    bat 'nunit-console exp-project.Tests.dll'
+                }
+            }
         }
+
 
       }
     }
