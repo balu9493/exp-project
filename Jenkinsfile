@@ -8,8 +8,19 @@ pipeline {
     }
 
     stage('list dir') {
-      steps {
-        bat 'dir'
+      parallel {
+        stage('list dir') {
+          steps {
+            bat 'dir'
+          }
+        }
+
+        stage('Unit tests') {
+          steps {
+            powershell 'nuget restore exp-project && msbuild exp-project.sln &&  Invoke-NUnit exp-project.Tests.dll'
+          }
+        }
+
       }
     }
 
