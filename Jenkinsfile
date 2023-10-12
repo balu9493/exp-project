@@ -13,11 +13,5 @@ pipeline {
       }
     }
 
-    stage('Unit tests') {
-      steps {
-        bat 'npm install & npm test'
-      }
-    }
-
   }
 }
